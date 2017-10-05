@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::string;
 
 string hide_msg(string input);
 
@@ -11,9 +13,12 @@ int main() {
 	
 	cout << "HANGMAN by Tolby Lam \n";
 	cout << "Player 1, type a word or phrase... \n";
-	//figure out how to hide the word/phrase...
 	getline(cin, (msg));
 	hidden_msg = hide_msg(msg);
+	
+	//print blank lines to clear screen...
+	for(int i = 0; i < 20; i++)
+		cout << "\n";
 	
 	do {
 		char input;
@@ -21,7 +26,7 @@ int main() {
 		cout << hidden_msg << endl;
 		cout << "Player 2, guess a character... " << endl; //
 		cin >> input;
-		for(int i = 0; i < msg.size(); i++) { //this could be a method...
+		for(int i = 0; i < msg.size(); i++) { //check if letter is in word/phrase
 			if(input == msg.at(i)) {
 				hidden_msg.at(i) = input;
 				success = true;
